@@ -23,25 +23,18 @@
  * GitHub: https://github.com/DanielZenFlow
  */
 
-(function () {
+(function() {
   'use strict';
 
   // === GM_* 接口封装 ===
-  const _GM_getValue =
-    typeof GM_getValue !== 'undefined' ? GM_getValue : () => {};
-  const _GM_setValue =
-    typeof GM_setValue !== 'undefined' ? GM_setValue : () => {};
-  const _GM_registerMenuCommand =
-    typeof GM_registerMenuCommand !== 'undefined'
-      ? GM_registerMenuCommand
-      : () => {};
-  const _GM_openInTab =
-    typeof GM_openInTab !== 'undefined' ? GM_openInTab : null;
+  const _GM_getValue = typeof GM_getValue !== 'undefined' ? GM_getValue : () => {};
+  const _GM_setValue = typeof GM_setValue !== 'undefined' ? GM_setValue : () => {};
+  const _GM_registerMenuCommand = typeof GM_registerMenuCommand !== 'undefined' ? GM_registerMenuCommand : () => {};
+  const _GM_openInTab = typeof GM_openInTab !== 'undefined' ? GM_openInTab : null;
 
   // === 智能打开链接函数 ===
   function openGitHub() {
-    const url =
-      'https://github.com/DanielZenFlow/Weibo-Blacklist-Enhanced-Lite';
+    const url = 'https://github.com/DanielZenFlow/Weibo-Blacklist-Enhanced-Lite';
 
     // 优先使用油猴的专用API（不会被拦截）
     if (_GM_openInTab) {
@@ -53,22 +46,16 @@
     const newWindow = window.open(url, '_blank');
 
     // 检测是否被拦截
-    if (
-      !newWindow ||
-      newWindow.closed ||
-      typeof newWindow.closed === 'undefined'
-    ) {
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
       // 延迟检测，有些浏览器需要时间
       setTimeout(() => {
         if (!newWindow || newWindow.closed) {
           alert(
             '🚫 弹窗被浏览器拦截了！\n\n' +
-              '📋 GitHub链接：' +
-              url +
-              '\n\n' +
-              '💡 解决方法：\n' +
-              '1. 复制上面的链接到新标签页\n' +
-              '2. 或者允许此网站的弹窗权限'
+            '📋 GitHub链接：' + url + '\n\n' +
+            '💡 解决方法：\n' +
+            '1. 复制上面的链接到新标签页\n' +
+            '2. 或者允许此网站的弹窗权限'
           );
         }
       }, 100);
@@ -77,8 +64,7 @@
 
   // === 智能打开链接函数 ===
   function openGitHub() {
-    const url =
-      'https://github.com/DanielZenFlow/Weibo-Blacklist-Enhanced-Lite';
+    const url = 'https://github.com/DanielZenFlow/Weibo-Blacklist-Enhanced-Lite';
 
     // 优先使用油猴的专用API（不会被拦截）
     if (_GM_openInTab) {
@@ -90,22 +76,16 @@
     const newWindow = window.open(url, '_blank');
 
     // 检测是否被拦截
-    if (
-      !newWindow ||
-      newWindow.closed ||
-      typeof newWindow.closed === 'undefined'
-    ) {
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
       // 延迟检测，有些浏览器需要时间
       setTimeout(() => {
         if (!newWindow || newWindow.closed) {
           alert(
             '🚫 弹窗被浏览器拦截了！\n\n' +
-              '📋 GitHub链接：' +
-              url +
-              '\n\n' +
-              '💡 解决方法：\n' +
-              '1. 复制上面的链接到新标签页\n' +
-              '2. 或者允许此网站的弹窗权限'
+            '📋 GitHub链接：' + url + '\n\n' +
+            '💡 解决方法：\n' +
+            '1. 复制上面的链接到新标签页\n' +
+            '2. 或者允许此网站的弹窗权限'
           );
         }
       }, 100);
@@ -118,12 +98,8 @@
     if (isDisabled) return;
 
     const now = Date.now();
-    const lastReminderTime = _GM_getValue(
-      CONFIG.LAST_STAR_REMINDER_TIME_KEY,
-      0
-    );
-    const daysSinceLastReminder =
-      (now - lastReminderTime) / (1000 * 60 * 60 * 24);
+    const lastReminderTime = _GM_getValue(CONFIG.LAST_STAR_REMINDER_TIME_KEY, 0);
+    const daysSinceLastReminder = (now - lastReminderTime) / (1000 * 60 * 60 * 24);
 
     // 检查是否需要提醒
     let shouldRemind = false;
@@ -159,8 +135,8 @@
 
     const result = confirm(
       `${message}\n\n` +
-        `点击"确定"打开 GitHub 页面\n` +
-        `点击"取消"${isFirstTime ? '稍后提醒' : '不再提醒'}`
+      `点击"确定"打开 GitHub 页面\n` +
+      `点击"取消"${isFirstTime ? '稍后提醒' : '不再提醒'}`
     );
 
     if (result) {
@@ -170,8 +146,8 @@
       setTimeout(() => {
         const hasStarred = confirm(
           '感谢访问我们的 GitHub 页面！\n\n' +
-            '如果您已经给了 ⭐ Star，点击"确定"我们将不再提醒\n' +
-            '点击"取消"我们稍后再提醒'
+          '如果您已经给了 ⭐ Star，点击"确定"我们将不再提醒\n' +
+          '点击"取消"我们稍后再提醒'
         );
 
         if (hasStarred) {
@@ -179,13 +155,14 @@
           alert('🎉 感谢您的 Star！我们将不再显示提醒。');
         }
       }, 30000);
+
     } else if (!isFirstTime) {
       // 非首次提醒，用户选择取消就不再提醒
       _GM_setValue(CONFIG.STAR_REMINDER_DISABLED_KEY, true);
     }
   }
   function openGitHub() {
-    const url = 'https://github.com/DanielZenFlow';
+    const url = 'https://github.com/DanielZenFlow/Weibo-Blacklist-Enhanced-Lite';
 
     // 优先使用油猴的专用API（不会被拦截）
     if (_GM_openInTab) {
@@ -197,22 +174,16 @@
     const newWindow = window.open(url, '_blank');
 
     // 检测是否被拦截
-    if (
-      !newWindow ||
-      newWindow.closed ||
-      typeof newWindow.closed === 'undefined'
-    ) {
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
       // 延迟检测，有些浏览器需要时间
       setTimeout(() => {
         if (!newWindow || newWindow.closed) {
           alert(
             '🚫 弹窗被浏览器拦截了！\n\n' +
-              '📋 GitHub链接：' +
-              url +
-              '\n\n' +
-              '💡 解决方法：\n' +
-              '1. 复制上面的链接到新标签页\n' +
-              '2. 或者允许此网站的弹窗权限'
+            '📋 GitHub链接：' + url + '\n\n' +
+            '💡 解决方法：\n' +
+            '1. 复制上面的链接到新标签页\n' +
+            '2. 或者允许此网站的弹窗权限'
           );
         }
       }, 100);
@@ -229,10 +200,10 @@
     MAX_RETRIES: 3,
     VERSION: '1.0.0-lite',
     // Star提醒间隔：首次安装 → 7天后 → 30天后 → 90天后 → 不再提醒
-    STAR_REMINDER_INTERVALS: [0, 7, 30, 90], // 天数
+    STAR_REMINDER_INTERVALS: [0, 7, 30, 90] // 天数
   };
 
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   // 保存原生接口
   if (!window.WB_BL_NATIVE_LITE) {
@@ -240,7 +211,7 @@
       fetch: window.fetch,
       XHROpen: XMLHttpRequest.prototype.open,
       XHRSend: XMLHttpRequest.prototype.send,
-      WebSocket: window.WebSocket,
+      WebSocket: window.WebSocket
     };
   }
 
@@ -250,25 +221,17 @@
   async function fullSyncBlacklist() {
     console.log('[WB-BL-Lite] Starting full sync...');
     const uidList = [];
-    let page = 1,
-      cursor = 0,
-      retries = 0;
+    let page = 1, cursor = 0, retries = 0;
 
     while (true) {
       let url = `/ajax/setting/getFilteredUsers?page=${page}`;
       if (cursor) url += `&cursor=${cursor}`;
 
       try {
-        const res = await window.WB_BL_NATIVE_LITE.fetch(url, {
-          credentials: 'include',
-        });
+        const res = await window.WB_BL_NATIVE_LITE.fetch(url, { credentials: 'include' });
 
         if (res.status === 418) {
-          console.warn(
-            `[WB-BL-Lite] Got 418 on page ${page}, retry ${retries + 1}/${
-              CONFIG.MAX_RETRIES
-            }`
-          );
+          console.warn(`[WB-BL-Lite] Got 418 on page ${page}, retry ${retries + 1}/${CONFIG.MAX_RETRIES}`);
           if (++retries > CONFIG.MAX_RETRIES) {
             console.error('[WB-BL-Lite] Too many 418 errors, stopping sync');
             break;
@@ -289,7 +252,7 @@
         }
 
         let pageCount = 0;
-        data.card_group.forEach((item) => {
+        data.card_group.forEach(item => {
           const match = item.scheme?.match(/uid=(\d{5,})/);
           if (match) {
             uidList.push(match[1]);
@@ -304,6 +267,7 @@
         page++;
         retries = 0; // 重置重试计数
         await sleep(CONFIG.THROTTLE_MS);
+
       } catch (error) {
         console.error(`[WB-BL-Lite] Error on page ${page}:`, error);
         break;
@@ -321,10 +285,7 @@
   async function deltaSync(existingSet) {
     try {
       console.log('[WB-BL-Lite] Starting delta sync...');
-      const res = await window.WB_BL_NATIVE_LITE.fetch(
-        '/ajax/setting/getFilteredUsers?page=1',
-        { credentials: 'include' }
-      );
+      const res = await window.WB_BL_NATIVE_LITE.fetch('/ajax/setting/getFilteredUsers?page=1', { credentials: 'include' });
 
       if (res.status === 418) {
         console.warn('[WB-BL-Lite] Got 418 during delta sync, skipping');
@@ -340,7 +301,7 @@
       let added = 0;
 
       if (data.card_group) {
-        data.card_group.forEach((item) => {
+        data.card_group.forEach(item => {
           const match = item.scheme?.match(/uid=(\d{5,})/);
           if (match && !existingSet.has(match[1])) {
             existingSet.add(match[1]);
@@ -367,18 +328,13 @@
    * 多页同步
    */
   async function syncPages(existingSet, pages = 5) {
-    let page = 1,
-      cursor = 0,
-      retries = 0,
-      added = 0;
+    let page = 1, cursor = 0, retries = 0, added = 0;
 
     while (page <= pages) {
       let url = `/ajax/setting/getFilteredUsers?page=${page}`;
       if (cursor) url += `&cursor=${cursor}`;
 
-      const res = await window.WB_BL_NATIVE_LITE.fetch(url, {
-        credentials: 'include',
-      });
+      const res = await window.WB_BL_NATIVE_LITE.fetch(url, { credentials: 'include' });
 
       if (res.status === 418) {
         if (++retries > CONFIG.MAX_RETRIES) break;
@@ -389,7 +345,7 @@
       if (!res.ok) break;
 
       const data = await res.json();
-      (data.card_group || []).forEach((item) => {
+      (data.card_group || []).forEach(item => {
         const match = item.scheme.match(/uid=(\d{5,})/);
         if (match && !existingSet.has(match[1])) {
           existingSet.add(match[1]);
@@ -403,8 +359,7 @@
       await sleep(CONFIG.THROTTLE_MS);
     }
 
-    if (added)
-      _GM_setValue(CONFIG.STORAGE_KEY, Array.from(existingSet).join(','));
+    if (added) _GM_setValue(CONFIG.STORAGE_KEY, Array.from(existingSet).join(','));
     return added;
   }
 
@@ -415,9 +370,9 @@
     if (isFirstRun) {
       const shouldSync = confirm(
         '欢迎使用 Weibo Blacklist Enhanced Lite！\n\n' +
-          '首次使用建议进行全量黑名单同步以确保最佳效果。\n' +
-          '这个过程可能需要几分钟时间。\n\n' +
-          '点击"确定"开始同步，"取消"跳过同步'
+        '首次使用建议进行全量黑名单同步以确保最佳效果。\n' +
+        '这个过程可能需要几分钟时间。\n\n' +
+        '点击"确定"开始同步，"取消"跳过同步'
       );
 
       _GM_setValue(CONFIG.FIRST_RUN_KEY, true);
@@ -451,7 +406,7 @@
         // 使用缓存数据或进行增量同步
         const cachedData = _GM_getValue(CONFIG.STORAGE_KEY, '');
         if (cachedData) {
-          blacklistSet = new Set(cachedData.split(',').filter((uid) => uid));
+          blacklistSet = new Set(cachedData.split(',').filter(uid => uid));
           // 增量同步
           try {
             blacklistSet = await deltaSync(blacklistSet);
@@ -471,15 +426,14 @@
 
       // 等待DOM准备好后注入CSS
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () =>
-          injectCSS(generateCSSRules())
-        );
+        document.addEventListener('DOMContentLoaded', () => injectCSS(generateCSSRules()));
       } else {
         injectCSS(generateCSSRules());
       }
 
       // 检查是否需要显示Star提醒
       checkStarReminder();
+
     } catch (error) {
       console.error('Blacklist initialization failed:', error);
       blacklistSet = new Set(); // 确保有一个有效的空集合
@@ -488,16 +442,12 @@
 
   // === CSS注入（仅黑名单相关） ===
   function generateCSSRules() {
-    const rules = Array.from(blacklistSet)
-      .map(
-        (uid) => `
+    const rules = Array.from(blacklistSet).map(uid => `
       .Feed_body_3R0rO:has([data-user-id="${uid}"]),
       .card-wrap:has([data-user-id="${uid}"]) {
         display: none !important;
       }
-    `
-      )
-      .join('\n');
+    `).join('\n');
     return rules;
   }
 
@@ -528,11 +478,7 @@
     (function traverse(obj) {
       if (!obj || typeof obj !== 'object') return;
       Object.entries(obj).forEach(([key, value]) => {
-        if (
-          /^(?:uid|user_id|userId|id|idstr)$/i.test(key) &&
-          typeof value === 'string' &&
-          /^\d{5,}$/.test(value)
-        ) {
+        if (/^(?:uid|user_id|userId|id|idstr)$/i.test(key) && typeof value === 'string' && /^\d{5,}$/.test(value)) {
           uids.add(value);
         }
         if (key === 'user' && value && value.id) uids.add(String(value.id));
@@ -549,25 +495,20 @@
 
     if (Array.isArray(obj)) {
       return obj
-        .filter(
-          (item) => ![...extractUIDs(item)].some((uid) => blacklistSet.has(uid))
-        )
+        .filter(item => ![...extractUIDs(item)].some(uid => blacklistSet.has(uid)))
         .map(filterData);
     }
 
     const result = {};
     for (const [key, value] of Object.entries(obj)) {
-      result[key] = Array.isArray(value)
-        ? filterData(value)
-        : value && typeof value === 'object'
-        ? filterData(value)
-        : value;
+      result[key] = Array.isArray(value) ? filterData(value)
+                   : (value && typeof value === 'object' ? filterData(value) : value);
     }
     return result;
   }
 
   // === Fetch 拦截 ===
-  window.fetch = async function (input, init) {
+  window.fetch = async function(input, init) {
     const url = typeof input === 'string' ? input : input.url;
 
     // 黑名单操作监听
@@ -586,12 +527,7 @@
 
     const res = await window.WB_BL_NATIVE_LITE.fetch(input, init);
 
-    if (
-      typeof url === 'string' &&
-      /\/(?:ajax\/(?:feed|statuses|comment|getCommentList|repost|like)|graphql\/|(?:mymblog|timeline|index))/.test(
-        url
-      )
-    ) {
+    if (typeof url === 'string' && /\/(?:ajax\/(?:feed|statuses|comment|getCommentList|repost|like)|graphql\/|(?:mymblog|timeline|index))/.test(url)) {
       try {
         const data = await res.clone().json();
         return new Response(JSON.stringify(filterData(data)), res);
@@ -602,23 +538,19 @@
   };
 
   // === XHR 拦截 ===
-  XMLHttpRequest.prototype.open = function (method, url, ...args) {
+  XMLHttpRequest.prototype.open = function(method, url, ...args) {
     this._bl_url = url;
     return window.WB_BL_NATIVE_LITE.XHROpen.call(this, method, url, ...args);
   };
 
-  XMLHttpRequest.prototype.send = function (body) {
+  XMLHttpRequest.prototype.send = function(body) {
     this.addEventListener('readystatechange', () => {
       if (this.readyState === 4 && this.status === 200 && this._bl_url) {
-        if (
-          /\/(?:ajax\/(?:feed|statuses)|(?:mymblog|timeline))/.test(
-            this._bl_url
-          )
-        ) {
+        if (/\/(?:ajax\/(?:feed|statuses)|(?:mymblog|timeline))/.test(this._bl_url)) {
           try {
             const data = JSON.parse(this.responseText);
             Object.defineProperty(this, 'responseText', {
-              value: JSON.stringify(filterData(data)),
+              value: JSON.stringify(filterData(data))
             });
           } catch {}
         }
@@ -631,7 +563,7 @@
   window.WebSocket = class extends window.WB_BL_NATIVE_LITE.WebSocket {
     constructor(url, protocols) {
       super(url, protocols);
-      this.addEventListener('message', (evt) => {
+      this.addEventListener('message', evt => {
         try {
           const data = JSON.parse(evt.data);
           evt.data = JSON.stringify(filterData(data));
@@ -641,21 +573,15 @@
   };
 
   // === DOM 监听器 ===
-  (function () {
-    const observer = new MutationObserver((mutations) => {
+  (function() {
+    const observer = new MutationObserver(mutations => {
       clearTimeout(window._wb_bl_lite_timer);
       window._wb_bl_lite_timer = setTimeout(() => {
-        mutations.forEach((mutation) => {
-          Array.from(mutation.addedNodes).forEach((node) => {
-            if (
-              node instanceof HTMLElement &&
-              node.matches('.Feed_body_3R0rO')
-            ) {
-              if (
-                [...node.querySelectorAll('[data-user-id]')].some((el) =>
-                  blacklistSet.has(el.getAttribute('data-user-id'))
-                )
-              ) {
+        mutations.forEach(mutation => {
+          Array.from(mutation.addedNodes).forEach(node => {
+            if (node instanceof HTMLElement && node.matches('.Feed_body_3R0rO')) {
+              if ([...node.querySelectorAll('[data-user-id]')]
+                    .some(el => blacklistSet.has(el.getAttribute('data-user-id')))) {
                 node.style.display = 'none';
               }
             }
@@ -672,13 +598,10 @@
 
         // SPA 路由监听
         const originalPushState = history.pushState;
-        history.pushState = function (state, title, url) {
+        history.pushState = function(state, title, url) {
           originalPushState.call(this, state, title, url);
           observer.disconnect();
-          observer.observe(document.body || document.documentElement, {
-            childList: true,
-            subtree: true,
-          });
+          observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
         };
       } else {
         setTimeout(attachObserver, 50);
@@ -703,11 +626,7 @@
   _GM_registerMenuCommand('🔄 全量同步', async () => {
     const oldSize = blacklistSet.size;
     blacklistSet = await fullSyncBlacklist();
-    alert(
-      `全量同步完成！新增 ${blacklistSet.size - oldSize} 个用户（共 ${
-        blacklistSet.size
-      }）`
-    );
+    alert(`全量同步完成！新增 ${blacklistSet.size - oldSize} 个用户（共 ${blacklistSet.size}）`);
   });
 
   _GM_registerMenuCommand('⭐ 给我们 Star', () => {
@@ -716,7 +635,8 @@
 
   _GM_registerMenuCommand('🔕 不再提醒Star', () => {
     const shouldDisable = confirm(
-      '确认要关闭 Star 提醒吗？\n\n' + '这将永久停止所有 Star 相关提醒'
+      '确认要关闭 Star 提醒吗？\n\n' +
+      '这将永久停止所有 Star 相关提醒'
     );
 
     if (shouldDisable) {
@@ -736,24 +656,20 @@
     } else if (isDisabled) {
       starStatus = '🔕 Star提醒已禁用';
     } else {
-      const nextReminder =
-        CONFIG.STAR_REMINDER_COUNTS.find((count) => count > usageCount) ||
-        '不再提醒';
-      starStatus = `🔔 下次Star提醒: ${
-        nextReminder === '不再提醒' ? nextReminder : nextReminder + ' 次使用时'
-      }`;
+      const nextReminder = CONFIG.STAR_REMINDER_COUNTS.find(count => count > usageCount) || '不再提醒';
+      starStatus = `🔔 下次Star提醒: ${nextReminder === '不再提醒' ? nextReminder : nextReminder + ' 次使用时'}`;
     }
 
     alert(
       `Weibo Blacklist Enhanced Lite v${CONFIG.VERSION}\n` +
-        `专注于黑名单功能的轻量版微博增强工具\n\n` +
-        `当前缓存: ${blacklistSet.size} 个用户\n` +
-        `使用次数: ${usageCount} 次\n` +
-        `${starStatus}\n\n` +
-        `作者: DanielZenFlow\n` +
-        `许可: MIT License\n` +
-        `GitHub: https://github.com/DanielZenFlow/Weibo-Blacklist-Enhanced-Lite\n\n` +
-        `感谢使用！如果有帮助请给我们 Star ⭐`
+      `专注于黑名单功能的轻量版微博增强工具\n\n` +
+      `当前缓存: ${blacklistSet.size} 个用户\n` +
+      `使用次数: ${usageCount} 次\n` +
+      `${starStatus}\n\n` +
+      `作者: DanielZenFlow\n` +
+      `许可: MIT License\n` +
+      `GitHub: https://github.com/DanielZenFlow/Weibo-Blacklist-Enhanced-Lite\n\n` +
+      `感谢使用！如果有帮助请给我们 Star ⭐`
     );
   });
 
@@ -762,12 +678,8 @@
     const lastReminder = _GM_getValue(CONFIG.LAST_STAR_REMINDER_KEY, 0);
     const hasStarred = _GM_getValue(CONFIG.HAS_STARRED_KEY, false);
     const isDisabled = _GM_getValue(CONFIG.DISABLE_STAR_REMINDER_KEY, false);
-    const triggeredReminders = CONFIG.STAR_REMINDER_COUNTS.filter(
-      (count) => count <= lastReminder
-    );
-    const nextReminder = CONFIG.STAR_REMINDER_COUNTS.find(
-      (count) => count > usageCount
-    );
+    const triggeredReminders = CONFIG.STAR_REMINDER_COUNTS.filter(count => count <= lastReminder);
+    const nextReminder = CONFIG.STAR_REMINDER_COUNTS.find(count => count > usageCount);
 
     let status = '';
     if (hasStarred) {
@@ -775,18 +687,16 @@
     } else if (isDisabled) {
       status = '🔕 Star提醒已禁用';
     } else {
-      status = `🔔 下次提醒: ${
-        nextReminder ? nextReminder + ' 次使用时' : '不再提醒'
-      }`;
+      status = `🔔 下次提醒: ${nextReminder ? nextReminder + ' 次使用时' : '不再提醒'}`;
     }
 
     alert(
       `📊 使用统计\n\n` +
-        `总使用次数: ${usageCount}\n` +
-        `已触发提醒: ${triggeredReminders.length}/${CONFIG.STAR_REMINDER_COUNTS.length} 次\n` +
-        `${status}\n\n` +
-        `💡 使用次数在每次成功过滤黑名单内容时增加\n` +
-        `🎯 提醒触发点: ${CONFIG.STAR_REMINDER_COUNTS.join(', ')}`
+      `总使用次数: ${usageCount}\n` +
+      `已触发提醒: ${triggeredReminders.length}/${CONFIG.STAR_REMINDER_COUNTS.length} 次\n` +
+      `${status}\n\n` +
+      `💡 使用次数在每次成功过滤黑名单内容时增加\n` +
+      `🎯 提醒触发点: ${CONFIG.STAR_REMINDER_COUNTS.join(', ')}`
     );
   });
 
@@ -795,12 +705,8 @@
     const isDisabled = _GM_getValue(CONFIG.STAR_REMINDER_DISABLED_KEY, false);
     const starStatus = isDisabled ? '已关闭' : '已开启';
 
-    console.log(
-      `[WB-BL-Lite] v${CONFIG.VERSION} 启动完成，专注黑名单功能，已缓存 ${blacklistSet.size} UIDs`
-    );
+    console.log(`[WB-BL-Lite] v${CONFIG.VERSION} 启动完成，专注黑名单功能，已缓存 ${blacklistSet.size} UIDs`);
     console.log(`[WB-BL-Lite] Star提醒: ${starStatus}`);
-    console.log(
-      `[WB-BL-Lite] Author: DanielZenFlow | GitHub: https://github.com/DanielZenFlow/Weibo-Blacklist-Enhanced-Lite`
-    );
+    console.log(`[WB-BL-Lite] Author: DanielZenFlow | GitHub: https://github.com/DanielZenFlow/Weibo-Blacklist-Enhanced-Lite`);
   }, 1000);
 })();
